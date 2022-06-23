@@ -3,10 +3,12 @@
     <import>
         <faction identifier="imperial">
             <game>swtor</game>
+            <icon>empire</icon>
         </faction>
         
         <faction identifier="republic">
             <game>swtor</game>
+            <icon>republic</icon>
         </faction>
     </import>
 </data>
