@@ -49,5 +49,16 @@
             <item name="rp.role.swtor.heal"><![CDATA[Heiler]]></item>
             <item name="rp.role.swtor.tank"><![CDATA[Tank]]></item>
         </category>
+    
+        <category name="rp.server">
+            <item name="rp.server.swtor.group.de"><![CDATA[Europäische Server]]></item>
+            <item name="rp.server.swtor.group.us"><![CDATA[US-Server]]></item>
+        
+            <item name="rp.server.swtor.darthmalgus"><![CDATA[Darth Malgus]]></item>
+            <item name="rp.server.swtor.sateleshan"><![CDATA[Satele Shan]]></item>
+            <item name="rp.server.swtor.starforge"><![CDATA[Star Forge]]></item>
+            <item name="rp.server.swtor.theleviathan"><![CDATA[The Leviathan]]></item>
+            <item name="rp.server.swtor.tulakhord"><![CDATA[Tulak Hord]]></item>
+        </category>
     </import>
 </language>

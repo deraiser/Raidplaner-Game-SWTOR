@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://daries.info/XSD/rp/server.xsd">
+    <import>
+        <server identifier="darthmalgus">
+            <type>PvE/PvP</type>
+            <servergroup>de</servergroup>
+            <game>swtor</game>
+        </server>
+        <server identifier="sateleshan">
+            <type>PvE/PvP</type>
+            <servergroup>us</servergroup>
+            <game>swtor</game>
+        </server>
+        <server identifier="starforge">
+            <type>PvE/PvP</type>
+            <servergroup>us</servergroup>
+            <game>swtor</game>
+        </server>
+        <server identifier="theleviathan">
+            <type>PvE/PvP</type>
+            <servergroup>de</servergroup>
+            <game>swtor</game>
+        </server>
+        <server identifier="tulakhord">
+            <type>PvE/PvP</type>
+            <servergroup>de</servergroup>
+            <game>swtor</game>
+        </server>
+    </import>
+</data>
