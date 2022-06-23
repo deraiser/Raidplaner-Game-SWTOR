@@ -24,5 +24,11 @@
             <item name="rp.race.swtor.twilek"><![CDATA[Twilek]]></item>
             <item name="rp.race.swtor.zabrak"><![CDATA[Zabrak]]></item>
         </category>
+    
+        <category name="rp.role">
+            <item name="rp.role.swtor.damagedealer"><![CDATA[Schaden]]></item>
+            <item name="rp.role.swtor.heal"><![CDATA[Heiler]]></item>
+            <item name="rp.role.swtor.tank"><![CDATA[Tank]]></item>
+        </category>
     </import>
 </language>
