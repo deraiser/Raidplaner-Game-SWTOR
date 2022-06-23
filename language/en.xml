@@ -9,5 +9,20 @@
         <category name="rp.game">
             <item name="rp.game.swtor"><![CDATA[Star Wars: The Old Republic]]></item>
         </category>
+    
+        <category name="rp.race">
+            <item name="rp.race.swtor.cathar"><![CDATA[Cathar]]></item>
+            <item name="rp.race.swtor.chiss"><![CDATA[Chiss]]></item>
+            <item name="rp.race.swtor.cyborg"><![CDATA[Cyborg]]></item>
+            <item name="rp.race.swtor.human"><![CDATA[Human]]></item>
+            <item name="rp.race.swtor.miraluka"><![CDATA[Miraluka]]></item>
+            <item name="rp.race.swtor.mirialan"><![CDATA[Mirialan]]></item>
+            <item name="rp.race.swtor.nautolaner"><![CDATA[Nautolaner]]></item>
+            <item name="rp.race.swtor.rattataki"><![CDATA[Rattataki]]></item>
+            <item name="rp.race.swtor.sith"><![CDATA[Sith]]></item>
+            <item name="rp.race.swtor.togruta"><![CDATA[Togruta]]></item>
+            <item name="rp.race.swtor.twilek"><![CDATA[Twilek]]></item>
+            <item name="rp.race.swtor.zabrak"><![CDATA[Zabrak]]></item>
+        </category>
     </import>
 </language>

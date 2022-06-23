@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://info.daries/XSD/rp/race.xsd">
+    <import>
+        <race identifier="cathar">
+            <icon>cathar</icon>
+            <factions>imperial,republic</factions>
+            <game>swtor</game>
+        </race>
+        <race identifier="chiss">
+            <icon>chiss</icon>
+            <factions>imperial,republic</factions>
+            <game>swtor</game>
+        </race>
+        <race identifier="cyborg">
+            <icon>cyborg</icon>
+            <factions>imperial,republic</factions>
+            <game>swtor</game>
+        </race>
+        <race identifier="human">
+            <icon>human</icon>
+            <factions>imperial,republic</factions>
+            <game>swtor</game>
+        </race>
+        <race identifier="miraluka">
+            <icon>miraluka</icon>
+            <factions>imperial,republic</factions>
+            <game>swtor</game>
+        </race>
+        <race identifier="mirialan">
+            <icon>mirialan</icon>
+            <factions>imperial,republic</factions>
+            <game>swtor</game>
+        </race>
+        <race identifier="nautolaner">
+            <icon>nautolaner</icon>
+            <factions>imperial,republic</factions>
+            <game>swtor</game>
+        </race>
+        <race identifier="rattataki">
+            <icon>rattataki</icon>
+            <factions>imperial,republic</factions>
+            <game>swtor</game>
+        </race>
+        <race identifier="sith">
+            <icon>sith</icon>
+            <factions>imperial,republic</factions>
+            <game>swtor</game>
+        </race>
+        <race identifier="togruta">
+            <icon>togruta</icon>
+            <factions>imperial,republic</factions>
+            <game>swtor</game>
+        </race>
+        <race identifier="twilek">
+            <icon>twilek</icon>
+            <factions>imperial,republic</factions>
+            <game>swtor</game>
+        </race>
+        <race identifier="zabrak">
+            <icon>zabrak</icon>
+            <factions>imperial,republic</factions>
+            <game>swtor</game>
+        </race>
+    </import>
+</data>

@@ -24,6 +24,7 @@
         
         <instruction type="rpGame" />
         <instruction type="rpFaction" />
+        <instruction type="rpRace" />
         
         <instruction type="language" />
     </instructions>
