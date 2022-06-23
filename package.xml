@@ -26,6 +26,7 @@
         <instruction type="rpFaction" />
         <instruction type="rpRace" />
         <instruction type="rpRole" />
+        <instruction type="rpClassification" />
         
         <instruction type="language" />
     </instructions>

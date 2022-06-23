@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://daries.info/XSD/rp/classification.xsd">
+    <import>
+        <classification identifier="operative">
+            <races>cathar,chiss,cyborg,human,miraluka,mirialan,rattataki,sith,togruta,twilek,zabrak</races>
+            <roles>damagedealer,heal</roles>
+            <factions>imperial,republic</factions>
+            <icon>operative</icon>
+            <game>swtor</game>
+        </classification>
+        <classification identifier="sniper">
+            <races>cathar,chiss,cyborg,human,miraluka,mirialan,rattataki,sith,togruta,twilek,zabrak</races>
+            <roles>damagedealer</roles>
+            <factions>imperial,republic</factions>
+            <icon>sniper</icon>
+            <game>swtor</game>
+        </classification>
+        <classification identifier="sorcerer">
+            <races>cathar,chiss,cyborg,human,miraluka,mirialan,rattataki,sith,togruta,twilek,zabrak</races>
+            <roles>damagedealer,heal</roles>
+            <factions>imperial,republic</factions>
+            <icon>sorcerer</icon>
+            <game>swtor</game>
+        </classification>
+        <classification identifier="assassin">
+            <races>cathar,chiss,cyborg,human,miraluka,mirialan,rattataki,sith,togruta,twilek,zabrak</races>
+            <roles>damagedealer,tank</roles>
+            <factions>imperial,republic</factions>
+            <icon>assassin</icon>
+            <game>swtor</game>
+        </classification>
+        <classification identifier="juggernaut">
+            <races>cathar,chiss,cyborg,human,miraluka,mirialan,rattataki,sith,togruta,twilek,zabrak</races>
+            <roles>damagedealer,tank</roles>
+            <factions>imperial,republic</factions>
+            <icon>juggernaut</icon>
+            <game>swtor</game>
+        </classification>
+        <classification identifier="marauder">
+            <races>cathar,chiss,cyborg,human,miraluka,mirialan,rattataki,sith,togruta,twilek,zabrak</races>
+            <roles>damagedealer</roles>
+            <factions>imperial,republic</factions>
+            <icon>marauder</icon>
+            <game>swtor</game>
+        </classification>
+        <classification identifier="mercenary">
+            <races>cathar,chiss,cyborg,human,miraluka,mirialan,rattataki,sith,togruta,twilek,zabrak</races>
+            <roles>damagedealer,heal</roles>
+            <factions>imperial,republic</factions>
+            <icon>mercenary</icon>
+            <game>swtor</game>
+        </classification>
+        <classification identifier="powertech">
+            <races>cathar,chiss,cyborg,human,miraluka,mirialan,rattataki,sith,togruta,twilek,zabrak</races>
+            <roles>damagedealer,tank</roles>
+            <factions>imperial,republic</factions>
+            <icon>powertech</icon>
+            <game>swtor</game>
+        </classification>
+        <classification identifier="scoundrel">
+            <races>cathar,chiss,cyborg,human,miraluka,mirialan,rattataki,sith,togruta,twilek,zabrak</races>
+            <roles>damagedealer,heal</roles>
+            <factions>imperial,republic</factions>
+            <icon>scoundrel</icon>
+            <game>swtor</game>
+        </classification>
+        <classification identifier="gunslinger">
+            <races>cathar,chiss,cyborg,human,miraluka,mirialan,rattataki,sith,togruta,twilek,zabrak</races>
+            <roles>damagedealer</roles>
+            <factions>imperial,republic</factions>
+            <icon>gunslinger</icon>
+            <game>swtor</game>
+        </classification>
+        <classification identifier="sage">
+            <races>cathar,chiss,cyborg,human,miraluka,mirialan,rattataki,sith,togruta,twilek,zabrak</races>
+            <roles>damagedealer,heal</roles>
+            <factions>imperial,republic</factions>
+            <icon>sage</icon>
+            <game>swtor</game>
+        </classification>
+        <classification identifier="shadow">
+            <races>cathar,chiss,cyborg,human,miraluka,mirialan,rattataki,sith,togruta,twilek,zabrak</races>
+            <roles>damagedealer,tank</roles>
+            <factions>imperial,republic</factions>
+            <icon>shadow</icon>
+            <game>swtor</game>
+        </classification>
+        <classification identifier="guardian">
+            <races>cathar,chiss,cyborg,human,miraluka,mirialan,rattataki,sith,togruta,twilek,zabrak</races>
+            <roles>damagedealer,tank</roles>
+            <factions>imperial,republic</factions>
+            <icon>guardian</icon>
+            <game>swtor</game>
+        </classification>
+        <classification identifier="sentinel">
+            <races>cathar,chiss,cyborg,human,miraluka,mirialan,rattataki,sith,togruta,twilek,zabrak</races>
+            <roles>damagedealer</roles>
+            <factions>imperial,republic</factions>
+            <icon>sentinel</icon>
+            <game>swtor</game>
+        </classification>
+        <classification identifier="commando">
+            <races>cathar,chiss,cyborg,human,miraluka,mirialan,rattataki,sith,togruta,twilek,zabrak</races>
+            <roles>damagedealer,heal</roles>
+            <factions>imperial,republic</factions>
+            <icon>commando</icon>
+            <game>swtor</game>
+        </classification>
+        <classification identifier="vanguard">
+            <races>cathar,chiss,cyborg,human,miraluka,mirialan,rattataki,sith,togruta,twilek,zabrak</races>
+            <roles>damagedealer,tank</roles>
+            <factions>imperial,republic</factions>
+            <icon>vanguard</icon>
+            <game>swtor</game>
+        </classification>
+    </import>
+</data>
