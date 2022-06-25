@@ -32,5 +32,7 @@
         <instruction type="rpServer" />
         
         <instruction type="language" />
+        
+        <instruction type="script" application="rp">acp/install_swtor.php</instruction>
     </instructions>
 </package>
