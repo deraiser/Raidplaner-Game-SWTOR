@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <language xmlns="http://www.woltlab.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.woltlab.com http://www.woltlab.com/XSD/5.4/language.xsd" languagecode="en">
     <import>
+        <category name="rp.character">
+            <item name="rp.character.category.swtor.equipment"><![CDATA[Equipment]]></item>
+            <item name="rp.character.swtor.class0"><![CDATA[First class]]></item>
+            <item name="rp.character.swtor.class1"><![CDATA[Second class]]></item>
+            <item name="rp.character.swtor.classEnable"><![CDATA[Enable class]]></item>
+            <item name="rp.character.swtor.level"><![CDATA[Level]]></item>
+            <item name="rp.character.swtor.implants.0"><![CDATA[No Implants]]></item>
+            <item name="rp.character.swtor.implants.1"><![CDATA[1 Implant]]></item>
+            <item name="rp.character.swtor.implants.2"><![CDATA[2 Implants]]></item>
+            <item name="rp.character.swtor.itemLevel"><![CDATA[Item Level]]></item>
+            <item name="rp.character.swtor.implants"><![CDATA[Implants]]></item>
+            <item name="rp.character.swtor.upgradeBlue"><![CDATA[Augment 73]]></item>
+            <item name="rp.character.swtor.upgradeBlue.description"><![CDATA[Number of blue augments.]]></item>
+            <item name="rp.character.swtor.upgradeGold"><![CDATA[Augment 77]]></item>
+            <item name="rp.character.swtor.upgradeGold.description"><![CDATA[Number of gold augments.]]></item>
+            <item name="rp.character.swtor.upgradePurple"><![CDATA[Augment 74]]></item>
+            <item name="rp.character.swtor.upgradePurple.description"><![CDATA[Number of purple augments.]]></item>
+        </category>
+        
         <category name="rp.classification">
             <item name="rp.classification.swtor.assassin"><![CDATA[Sith-Assassin]]></item>
             <item name="rp.classification.swtor.commando"><![CDATA[Commando]]></item>

@@ -22,6 +22,8 @@
     <instructions type="install">
         <instruction type="file" application="rp">files_rp.tar</instruction>
         
+        <instruction type="eventListener" />
+        
         <instruction type="rpGame" />
         <instruction type="rpFaction" />
         <instruction type="rpRace" />
