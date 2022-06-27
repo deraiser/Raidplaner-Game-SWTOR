@@ -10,5 +10,20 @@
 			<inherit>1</inherit>
 		</eventlistener>
         <!-- /all -->
+        
+        <!-- user -->
+		<eventlistener name="aboutCharacterProfileMenuContent">
+			<eventclassname>rp\system\menu\character\profile\content\AboutCharacterProfileMenuContent</eventclassname>
+			<eventname>getContent</eventname>
+			<listenerclassname>rp\system\event\listener\SWTORAboutCharacterProfileMenuContentListener</listenerclassname>
+			<environment>user</environment>
+		</eventlistener>
+		<eventlistener name="characterProfileAction">
+			<eventclassname>rp\data\character\CharacterProfileAction</eventclassname>
+			<eventname>initializeAction</eventname>
+			<listenerclassname>rp\system\event\listener\SWTORCharacterProfileActionListener</listenerclassname>
+			<environment>user</environment>
+		</eventlistener>
+        <!-- /user -->
     </import>
 </data>

@@ -21,8 +21,10 @@
 
     <instructions type="install">
         <instruction type="file" application="rp">files_rp.tar</instruction>
+        <instruction type="template" application="rp">templates_rp.tar</instruction>
         
         <instruction type="eventListener" />
+        <instruction type="templateListener" />
         
         <instruction type="rpGame" />
         <instruction type="rpFaction" />

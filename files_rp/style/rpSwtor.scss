@@ -1,0 +1,31 @@
+@include screen-sm-up {
+    .swtorCharacterProfileAbout {
+        .contentItemMultiColumn {
+            flex-basis: calc(50% - 20px) !important;
+        }
+    }
+}
+
+.swtorCharacterProfileAbout {
+    .contentItemList {
+        margin-top: 20px;
+    }
+}
+
+.swtorCharacterInformationHeadline {
+    @include wcfFontSmall;
+
+    margin-top: 5px;
+
+    .tabMenu {
+        margin-bottom: 5px;
+
+        > ul {
+            > li {
+                > a {
+                    @include wcfFontHeadline;
+                }
+            }
+        }
+    }
+}
