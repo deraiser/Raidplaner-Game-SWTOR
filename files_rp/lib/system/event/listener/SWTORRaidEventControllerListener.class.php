@@ -81,8 +81,6 @@ class SWTORRaidEventControllerListener implements IParameterizedEventListener
 
         /** @var CharacterProfile $character */
         foreach ($parameters['characters'] as $characterID => $character) {
-            $newCharacter = null;
-
             $classes = $character->classes;
             foreach ($classes as $class) {
                 if (!$class['classEnable']) continue;
@@ -90,10 +88,9 @@ class SWTORRaidEventControllerListener implements IParameterizedEventListener
                 foreach (['requiredItemLevel', 'requiredImplants'] as $required) {
                     $name = StringUtil::firstCharToLowerCase(\str_replace('required', '', $required));
 
-                    if ($event->{$required} !== 0) {
-                        if ($character->{$name} < $event->{$required}) {
-                            continue 2;
-                        }
+                    if ($event->{$required} == 0) continue;
+                    if ($class[$name] < $event->{$required}) {
+                        continue 2;
                     }
                 }
 
@@ -103,14 +100,14 @@ class SWTORRaidEventControllerListener implements IParameterizedEventListener
                     $name = StringUtil::firstCharToLowerCase(\str_replace('required', '', $required));
 
                     if ($event->{$required} !== 0) {
-                        if ($character->{$name} < $event->{$required}) {
-                            $max = $highUpgradeCount + $character->{$name};
+                        if ($class[$name] < $event->{$required}) {
+                            $max = $highUpgradeCount + $class[$name];
                             if ($max < 14) $notAccess = true;
                             break;
                         }
                     }
 
-                    $highUpgradeCount += $character->{$name};
+                    $highUpgradeCount += $class[$name];
                 }
 
                 if (!$notAccess) {
