@@ -24,6 +24,12 @@
 			<listenerclassname>rp\system\event\listener\SWTORCharacterProfileActionListener</listenerclassname>
 			<environment>user</environment>
 		</eventlistener>
+		<eventlistener name="eventRaidAttendeeAction">
+			<eventclassname>rp\data\event\raid\attendee\EventRaidAttendeeAction</eventclassname>
+			<eventname>submitAddDialog</eventname>
+			<listenerclassname>rp\system\event\listener\SWTOREventRaidAttendeeActionListener</listenerclassname>
+			<environment>user</environment>
+		</eventlistener>
 		<eventlistener name="raidEventController">
 			<eventclassname>rp\system\event\RaidEventController</eventclassname>
 			<eventname>availableCharacters,beforeSetFormObjectData,createForm</eventname>
