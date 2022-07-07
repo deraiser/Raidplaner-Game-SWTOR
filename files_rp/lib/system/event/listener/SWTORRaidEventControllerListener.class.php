@@ -3,8 +3,10 @@
 namespace rp\system\event\listener;
 
 use rp\data\character\CharacterProfile;
+use rp\data\classification\ClassificationCache;
 use rp\data\event\Event;
 use rp\data\game\GameCache;
+use rp\data\role\RoleCache;
 use rp\system\event\RaidEventController;
 use wcf\system\event\listener\IParameterizedEventListener;
 use wcf\system\form\builder\container\FormContainer;
@@ -82,7 +84,7 @@ class SWTORRaidEventControllerListener implements IParameterizedEventListener
         /** @var CharacterProfile $character */
         foreach ($parameters['characters'] as $characterID => $character) {
             $classes = $character->classes;
-            foreach ($classes as $class) {
+            foreach ($classes as $classID => $class) {
                 if (!$class['classEnable']) continue;
 
                 foreach (['requiredItemLevel', 'requiredImplants'] as $required) {
@@ -111,9 +113,24 @@ class SWTORRaidEventControllerListener implements IParameterizedEventListener
                 }
 
                 if (!$notAccess) {
-                    $parameters['availableCharacters'][] = [
+                    $id = $character->characterID . '_' . $classID;
+
+                    $label = '';
+                    $classification = ClassificationCache::getInstance()->getClassificationByID($class['classificationID']);
+                    if ($classification) {
+                        $label = $classification->getTitle();
+                    }
+
+                    $role = RoleCache::getInstance()->getRoleByID($class['roleID']);
+                    if ($role) {
+                        if (!empty($label)) $label .= ', ';
+                        $label .= $role->getTitle();
+                    }
+
+                    $parameters['availableCharacters'][$id] = [
                         'characterID' => $character->characterID,
                         'characterName' => $character->getTitle(),
+                        'characterLabel' => $character->getTitle() . ' (' . $label . ')',
                         'classificationID' => $class['classificationID'],
                         'icon' => $character->getAvatar()->getImageTag(16),
                         'roleID' => $class['roleID'],
