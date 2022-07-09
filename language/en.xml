@@ -21,23 +21,23 @@
             <item name="rp.character.swtor.upgradePurple.description"><![CDATA[Number of purple augments.]]></item>
         </category>
         
-        <category name="rp.fightStyleification">
-            <item name="rp.fightStyleification.swtor.assassin"><![CDATA[Sith-Assassin]]></item>
-            <item name="rp.fightStyleification.swtor.commando"><![CDATA[Commando]]></item>
-            <item name="rp.fightStyleification.swtor.guardian"><![CDATA[Jedi-Guardian]]></item>
-            <item name="rp.fightStyleification.swtor.gunslinger"><![CDATA[Gunslinger]]></item>
-            <item name="rp.fightStyleification.swtor.juggernaut"><![CDATA[Sith-Juggernaut]]></item>
-            <item name="rp.fightStyleification.swtor.marauder"><![CDATA[Sith-Marauder]]></item>
-            <item name="rp.fightStyleification.swtor.mercenary"><![CDATA[Mercenary]]></item>
-            <item name="rp.fightStyleification.swtor.operative"><![CDATA[Operative]]></item>
-            <item name="rp.fightStyleification.swtor.powertech"><![CDATA[Powertech]]></item>
-            <item name="rp.fightStyleification.swtor.sage"><![CDATA[Jedi-Sage]]></item>
-            <item name="rp.fightStyleification.swtor.scoundrel"><![CDATA[Scoundrel]]></item>
-            <item name="rp.fightStyleification.swtor.sentinel"><![CDATA[Jedi-Sentinel]]></item>
-            <item name="rp.fightStyleification.swtor.shadow"><![CDATA[Jedi-Shadow]]></item>
-            <item name="rp.fightStyleification.swtor.sniper"><![CDATA[Sniper]]></item>
-            <item name="rp.fightStyleification.swtor.sorcerer"><![CDATA[Sith-Sorcerer]]></item>
-            <item name="rp.fightStyleification.swtor.vanguard"><![CDATA[Vanguard]]></item>
+        <category name="rp.classification">
+            <item name="rp.classification.swtor.assassin"><![CDATA[Sith-Assassin]]></item>
+            <item name="rp.classification.swtor.commando"><![CDATA[Commando]]></item>
+            <item name="rp.classification.swtor.guardian"><![CDATA[Jedi-Guardian]]></item>
+            <item name="rp.classification.swtor.gunslinger"><![CDATA[Gunslinger]]></item>
+            <item name="rp.classification.swtor.juggernaut"><![CDATA[Sith-Juggernaut]]></item>
+            <item name="rp.classification.swtor.marauder"><![CDATA[Sith-Marauder]]></item>
+            <item name="rp.classification.swtor.mercenary"><![CDATA[Mercenary]]></item>
+            <item name="rp.classification.swtor.operative"><![CDATA[Operative]]></item>
+            <item name="rp.classification.swtor.powertech"><![CDATA[Powertech]]></item>
+            <item name="rp.classification.swtor.sage"><![CDATA[Jedi-Sage]]></item>
+            <item name="rp.classification.swtor.scoundrel"><![CDATA[Scoundrel]]></item>
+            <item name="rp.classification.swtor.sentinel"><![CDATA[Jedi-Sentinel]]></item>
+            <item name="rp.classification.swtor.shadow"><![CDATA[Jedi-Shadow]]></item>
+            <item name="rp.classification.swtor.sniper"><![CDATA[Sniper]]></item>
+            <item name="rp.classification.swtor.sorcerer"><![CDATA[Sith-Sorcerer]]></item>
+            <item name="rp.classification.swtor.vanguard"><![CDATA[Vanguard]]></item>
         </category>
     
         <category name="rp.faction">
