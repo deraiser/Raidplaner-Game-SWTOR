@@ -83,15 +83,17 @@ class SWTORRaidEventControllerListener implements IParameterizedEventListener
 
         /** @var CharacterProfile $character */
         foreach ($parameters['characters'] as $characterID => $character) {
-            $classes = $character->classes;
-            foreach ($classes as $classID => $class) {
-                if (!$class['classEnable']) continue;
+            if ($event->requiredLevel !== 0 && $character->level < $event->requiredLevel) continue;
+            
+            $fightStyles = $character->fightStyles;
+            foreach ($fightStyles as $fightStyleID => $fightStyle) {
+                if (!$fightStyle['fightStyleEnable']) continue;
 
                 foreach (['requiredItemLevel', 'requiredImplants'] as $required) {
                     $name = StringUtil::firstCharToLowerCase(\str_replace('required', '', $required));
 
                     if ($event->{$required} == 0) continue;
-                    if ($class[$name] < $event->{$required}) {
+                    if ($fightStyle[$name] < $event->{$required}) {
                         continue 2;
                     }
                 }
@@ -102,26 +104,26 @@ class SWTORRaidEventControllerListener implements IParameterizedEventListener
                     $name = StringUtil::firstCharToLowerCase(\str_replace('required', '', $required));
 
                     if ($event->{$required} !== 0) {
-                        if ($class[$name] < $event->{$required}) {
-                            $max = $highUpgradeCount + $class[$name];
+                        if ($fightStyle[$name] < $event->{$required}) {
+                            $max = $highUpgradeCount + $fightStyle[$name];
                             if ($max < 14) $notAccess = true;
                             break;
                         }
                     }
 
-                    $highUpgradeCount += $class[$name];
+                    $highUpgradeCount += $fightStyle[$name];
                 }
 
                 if (!$notAccess) {
-                    $id = $character->characterID . '_' . $classID;
+                    $id = $character->characterID . '_' . $fightStyleID;
 
                     $label = '';
-                    $classification = ClassificationCache::getInstance()->getClassificationByID($class['classificationID']);
+                    $classification = ClassificationCache::getInstance()->getClassificationByID($fightStyle['classificationID']);
                     if ($classification) {
                         $label = $classification->getTitle();
                     }
 
-                    $role = RoleCache::getInstance()->getRoleByID($class['roleID']);
+                    $role = RoleCache::getInstance()->getRoleByID($fightStyle['roleID']);
                     if ($role) {
                         if (!empty($label)) $label .= ', ';
                         $label .= $role->getTitle();
@@ -131,9 +133,9 @@ class SWTORRaidEventControllerListener implements IParameterizedEventListener
                         'characterID' => $character->characterID,
                         'characterName' => $character->getTitle(),
                         'characterLabel' => $character->getTitle() . ' (' . $label . ')',
-                        'classificationID' => $class['classificationID'],
+                        'classificationID' => $fightStyle['classificationID'],
                         'icon' => $character->getAvatar()->getImageTag(16),
-                        'roleID' => $class['roleID'],
+                        'roleID' => $fightStyle['roleID'],
                         'userID' => $character->userID,
                     ];
                 }

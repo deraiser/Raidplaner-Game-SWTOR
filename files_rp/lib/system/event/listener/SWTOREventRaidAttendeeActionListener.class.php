@@ -5,7 +5,10 @@ namespace rp\system\event\listener;
 use rp\data\event\raid\attendee\EventRaidAttendeeAction;
 use rp\data\game\GameCache;
 use rp\system\cache\runtime\CharacterRuntimeCache;
+use rp\system\cache\runtime\EventRaidAttendeeRuntimeCache;
+use rp\util\SWTORUtil;
 use wcf\system\event\listener\IParameterizedEventListener;
+use wcf\system\WCF;
 
 /*  Project:    Raidplaner: Game: SWTOR
  *  Package:    info.daries.rp.game.swtor
@@ -44,16 +47,44 @@ class SWTOREventRaidAttendeeActionListener implements IParameterizedEventListene
         if (GameCache::getInstance()->getCurrentGame()->identifier !== 'swtor') return;
         if (!($eventObj instanceof EventRaidAttendeeAction)) return;
 
-        [$characterID, $classID] = \explode('_', $parameters['characterID'], 2);
+        switch ($eventName) {
+            case 'initializeAction':
+                if ($eventObj->getActionName() === 'getPopover') {
+                    $this->getPopover($eventObj);
+                }
+                break;
+            case 'submitAddDialog':
+                $this->submitAddDialog($parameters);
+                break;
+        }
+    }
+
+    protected function getPopover(EventRaidAttendeeAction $eventObj): void
+    {
+        $attendeeID = $eventObj->getObjectIDs()[0] ?? 0;
+        if (!$attendeeID) return;
+
+        $attendee = EventRaidAttendeeRuntimeCache::getInstance()->getObject($attendeeID);
+        if ($attendee === null) return;
+
+        $character = CharacterRuntimeCache::getInstance()->getObject($attendee->characterID);
+        if ($character === null) return;
+
+        WCF::getTPL()->assign('popupFightStyles', SWTORUtil::getClassArrayList($character));
+    }
+
+    protected function submitAddDialog(array &$parameters): void
+    {
+        [$characterID, $fightStyleID] = \explode('_', $parameters['characterID'], 2);
 
         $character = CharacterRuntimeCache::getInstance()->getObject($characterID);
-        $class = $character->classes[$classID];
+        $fightStyle = $character->fightStyles[$fightStyleID];
 
         $parameters['characterID'] = null;
         $parameters['saveData'] = [
             'characterID' => $character->characterID,
             'characterName' => $character->characterName,
-            'classificationID' => $class['classificationID'],
+            'classificationID' => $fightStyle['classificationID'],
             'roleID' => $class['roleID'],
         ];
     }

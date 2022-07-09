@@ -3,10 +3,10 @@
     <import>
         <category name="rp.character">
             <item name="rp.character.category.swtor.equipment"><![CDATA[Ausrüstung]]></item>
-            <item name="rp.character.swtor.class0"><![CDATA[Erste Klasse]]></item>
-            <item name="rp.character.swtor.class1"><![CDATA[Zweite Klasse]]></item>
-            <item name="rp.character.swtor.classEnable"><![CDATA[Klasse aktivieren]]></item>
-            <item name="rp.character.swtor.class.about"><![CDATA[Klassen Informationen]]></item>
+            <item name="rp.character.swtor.fightStyle0"><![CDATA[1. Kampfstil]]></item>
+            <item name="rp.character.swtor.fightStyle1"><![CDATA[2. Kampfstil]]></item>
+            <item name="rp.character.swtor.fightStyleEnable"><![CDATA[Kampfstil aktivieren]]></item>
+            <item name="rp.character.swtor.fightStyle.about"><![CDATA[Kampfstil Informationen]]></item>
             <item name="rp.character.swtor.implants"><![CDATA[Implantate]]></item>
             <item name="rp.character.swtor.implants.0"><![CDATA[Keine Implantate]]></item>
             <item name="rp.character.swtor.implants.1"><![CDATA[1 Implantat]]></item>

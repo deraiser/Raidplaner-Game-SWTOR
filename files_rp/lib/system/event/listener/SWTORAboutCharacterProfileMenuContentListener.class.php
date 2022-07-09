@@ -48,24 +48,24 @@ class SWTORAboutCharacterProfileMenuContentListener implements IParameterizedEve
         $characterID = isset($_REQUEST['id']) ? \intval($_REQUEST['id']) : 0;
         if ($characterID) {
             $character = CharacterProfileRuntimeCache::getInstance()->getObject($characterID);
-            $classes = [];
-            foreach ($character->classes as $key => $class) {
-                if (!$class['classEnable']) continue;
+            $fightStyles = [];
+            foreach ($character->fightStyles as $key => $fightStyle) {
+                if (!$fightStyle['fightStyleEnable']) continue;
 
-                $classes[$key] = [
-                    'classification' => ClassificationCache::getInstance()->getClassificationByID($class['classificationID'])?->getTitle() ?? '',
-                    'role' => RoleCache::getInstance()->getRoleByID($class['roleID'])?->getTitle() ?? '',
-                    'itemLevel' => $class['itemLevel'],
-                    'implants' => $class['implants'],
-                    'upgradeBlue' => $class['upgradeBlue'],
-                    'upgradePurple' => $class['upgradePurple'],
-                    'upgradeGold' => $class['upgradeGold'],
+                $fightStyles[$key] = [
+                    'classification' => ClassificationCache::getInstance()->getClassificationByID($fightStyle['classificationID'])?->getTitle() ?? '',
+                    'role' => RoleCache::getInstance()->getRoleByID($fightStyle['roleID'])?->getTitle() ?? '',
+                    'itemLevel' => $fightStyle['itemLevel'],
+                    'implants' => $fightStyle['implants'],
+                    'upgradeBlue' => $fightStyle['upgradeBlue'],
+                    'upgradePurple' => $fightStyle['upgradePurple'],
+                    'upgradeGold' => $fightStyle['upgradeGold'],
                 ];
             }
 
             WCF::getTPL()->assign([
                 'character' => $character,
-                'classes' => $classes,
+                'fightStyles' => $fightStyles,
             ]);
         }
     }

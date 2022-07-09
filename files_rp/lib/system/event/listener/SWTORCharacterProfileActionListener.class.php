@@ -3,10 +3,9 @@
 namespace rp\system\event\listener;
 
 use rp\data\character\CharacterProfileAction;
-use rp\data\classification\ClassificationCache;
 use rp\data\game\GameCache;
-use rp\data\role\RoleCache;
 use rp\system\cache\runtime\CharacterProfileRuntimeCache;
+use rp\util\SWTORUtil;
 use wcf\system\event\listener\IParameterizedEventListener;
 use wcf\system\WCF;
 
@@ -45,6 +44,7 @@ class SWTORCharacterProfileActionListener implements IParameterizedEventListener
     public function execute($eventObj, $className, $eventName, array &$parameters): void
     {
         if (GameCache::getInstance()->getCurrentGame()->identifier !== 'swtor') return;
+        if (!($eventObj instanceof CharacterProfileAction)) return;
 
         switch ($eventObj->getActionName()) {
             case 'getPopover':
@@ -56,26 +56,11 @@ class SWTORCharacterProfileActionListener implements IParameterizedEventListener
     protected function getPopover(CharacterProfileAction $eventObj): void
     {
         $characterID = $eventObj->getObjectIDs()[0] ?? 0;
-        if ($characterID) {
-            $characterProfile = CharacterProfileRuntimeCache::getInstance()->getObject($characterID);
-            if ($characterProfile) {
-                $classes = [];
-                foreach ($characterProfile->classes as $key => $class) {
-                    if (!$class['classEnable']) continue;
+        if (!$characterID) return;
 
-                    $classes[$key] = [
-                        'classification' => ClassificationCache::getInstance()->getClassificationByID($class['classificationID'])?->getTitle() ?? '',
-                        'role' => RoleCache::getInstance()->getRoleByID($class['roleID'])?->getTitle() ?? '',
-                        'itemLevel' => $class['itemLevel'],
-                        'implants' => $class['implants'],
-                        'upgradeBlue' => $class['upgradeBlue'],
-                        'upgradePurple' => $class['upgradePurple'],
-                        'upgradeGold' => $class['upgradeGold'],
-                    ];
-                }
+        $characterProfile = CharacterProfileRuntimeCache::getInstance()->getObject($characterID);
+        if ($characterProfile === null) return;
 
-                WCF::getTPL()->assign('popupClasses', $classes);
-            }
-        }
+        WCF::getTPL()->assign('popupFightStyles', SWTORUtil::getClassArrayList($characterProfile->getDecoratedObject()));
     }
 }

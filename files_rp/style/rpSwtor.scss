@@ -11,21 +11,3 @@
         margin-top: 20px;
     }
 }
-
-.swtorCharacterInformationHeadline {
-    @include wcfFontSmall;
-
-    margin-top: 5px;
-
-    .tabMenu {
-        margin-bottom: 5px;
-
-        > ul {
-            > li {
-                > a {
-                    @include wcfFontHeadline;
-                }
-            }
-        }
-    }
-}
