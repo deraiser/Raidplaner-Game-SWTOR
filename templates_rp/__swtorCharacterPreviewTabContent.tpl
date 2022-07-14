@@ -1,6 +1,6 @@
 {if $popupFightStyles|isset}
     {foreach from=$popupFightStyles key='__key' item='fightStyle'}
-        <div id="fightStyle{@$__key}" fightStyle="tabMenuContent">
+        <div id="fightStyle{@$__key}" class="tabMenuContent">
             <dl class="plain dataList">
                 <dt>{lang}rp.classification.title{/lang}</dt>
                 <dd>{$fightStyle.classification}</dd>

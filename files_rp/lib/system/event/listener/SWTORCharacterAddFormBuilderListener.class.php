@@ -22,6 +22,7 @@ use wcf\system\form\builder\field\validation\FormFieldValidationError;
 use wcf\system\form\builder\field\validation\FormFieldValidator;
 use wcf\system\form\builder\IFormDocument;
 use wcf\system\form\builder\IFormNode;
+use wcf\system\form\builder\field\IFormField;
 
 /*  Project:    Raidplaner: Game: SWTOR
  *  Package:    info.daries.rp.game.swtor
@@ -58,35 +59,36 @@ class SWTORCharacterAddFormBuilderListener implements IParameterizedEventListene
         /** @var FormContainer $characterGeneral */
         $characterGeneral = $eventObj->form->getNodeById('characterGeneralSection');
         $characterGeneral->appendChildren([
-                IntegerFormField::create('level')
-                ->label('rp.character.swtor.level')
-                ->required()
-                ->minimum(1)
-                ->maximum(90)
-                ->value(0),
-                SingleSelectionFormField::create('raceID')
-                ->label('rp.race.title')
-                ->required()
-                ->options(['' => 'wcf.global.noSelection'] + RaceCache::getInstance()->getRaces())
-                ->addValidator(new FormFieldValidator('uniqueness', function (SingleSelectionFormField $formField) {
-                            $value = $formField->getSaveValue();
+            IntegerFormField::create('level')
+            ->label('rp.character.swtor.level')
+            ->required()
+            ->minimum(1)
+            ->maximum(90)
+            ->value(0),
+            SingleSelectionFormField::create('raceID')
+            ->label('rp.race.title')
+            ->required()
+            ->options(['' => 'wcf.global.noSelection'] + RaceCache::getInstance()->getRaces())
+            ->addValidator(new FormFieldValidator('uniqueness', function (SingleSelectionFormField $formField) {
+            $value = $formField->getSaveValue();
 
-                            if (empty($value)) {
-                                $formField->addValidationError(new FormFieldValidationError('empty'));
-                            } else {
-                                $role = RaceCache::getInstance()->getRaceByID($value);
-                                if ($role === null) {
-                                    $formField->addValidationError(new FormFieldValidationError(
-                                            'invalid',
-                                            'rp.race.error.invalid'
-                                    ));
-                                }
-                            }
-                        })),
-                SingleSelectionFormField::create('serverID')
-                ->label('rp.server.title')
-                ->required()
-                ->options(['' => 'wcf.global.noSelection'] + ServerCache::getInstance()->getServers()),
+            if (empty($value)) {
+                $formField->addValidationError(new FormFieldValidationError('empty'));
+            }
+            else {
+                $role = RaceCache::getInstance()->getRaceByID($value);
+                if ($role === null) {
+                    $formField->addValidationError(new FormFieldValidationError(
+                        'invalid',
+                        'rp.race.error.invalid'
+                    ));
+                }
+            }
+        })),
+            SingleSelectionFormField::create('serverID')
+            ->label('rp.server.title')
+            ->required()
+            ->options(['' => 'wcf.global.noSelection'] + ServerCache::getInstance()->getServers()),
         ]);
 
         /** @var TabTabMenuFormContainer $characterTab */
@@ -97,14 +99,14 @@ class SWTORCharacterAddFormBuilderListener implements IParameterizedEventListene
                 ->label('rp.character.swtor.fightStyleEnable')
                 ->value($i === 0)
                 ->addValidator(new FormFieldValidator('checkFirstEnable', function (CheckboxFormField $formField) {
-                        $id = $formField->getId();
-                        if ($id === 'fightStyleEnable0') {
-                            $value = $formField->getSaveValue();
-                            if (!$value) {
-                                $formField->addValidationError(new FormFieldValidationError('empty'));
-                            }
-                        }
-                    }));
+                $id = $formField->getId();
+                if ($id === 'fightStyleEnable0') {
+                    $value = $formField->getSaveValue();
+                    if (!$value) {
+                        $formField->addValidationError(new FormFieldValidationError('empty'));
+                    }
+                }
+            }));
 
             $characterFightStyleTab = TabFormContainer::create('characterFightStyle' . $i)
                 ->label('rp.character.swtor.fightStyle' . $i)
@@ -117,47 +119,49 @@ class SWTORCharacterAddFormBuilderListener implements IParameterizedEventListene
                     ->required()
                     ->options(['' => 'wcf.global.noSelection'] + ClassificationCache::getInstance()->getClassifications())
                     ->addValidator(new FormFieldValidator('uniqueness', function (SingleSelectionFormField $formField) {
-                                $value = $formField->getSaveValue();
+                $value = $formField->getSaveValue();
 
-                                if (empty($value)) {
-                                    $formField->addValidationError(new FormFieldValidationError('empty'));
-                                } else {
-                                    $role = ClassificationCache::getInstance()->getClassificationByID($value);
-                                    if ($role === null) {
-                                        $formField->addValidationError(new FormFieldValidationError(
-                                                'invalid',
-                                                'rp.classification.error.invalid'
-                                        ));
-                                    }
-                                }
-                            }))
+                if (empty($value)) {
+                    $formField->addValidationError(new FormFieldValidationError('empty'));
+                }
+                else {
+                    $role = ClassificationCache::getInstance()->getClassificationByID($value);
+                    if ($role === null) {
+                        $formField->addValidationError(new FormFieldValidationError(
+                                'invalid',
+                                'rp.classification.error.invalid'
+                            ));
+                    }
+                }
+            }))
                     ->addDependency(
-                        NonEmptyFormFieldDependency::create('fightStyleEnable' . $i)
-                        ->field($fightStyleEnable)
-                    ),
+                    NonEmptyFormFieldDependency::create('fightStyleEnable' . $i)
+                    ->field($fightStyleEnable)
+                ),
                     SingleSelectionFormField::create('roleID' . $i)
                     ->label('rp.role.title')
                     ->required()
                     ->options(['' => 'wcf.global.noSelection'] + RoleCache::getInstance()->getRoles())
                     ->addValidator(new FormFieldValidator('uniqueness', function (SingleSelectionFormField $formField) {
-                                $value = $formField->getSaveValue();
+                $value = $formField->getSaveValue();
 
-                                if (empty($value)) {
-                                    $formField->addValidationError(new FormFieldValidationError('empty'));
-                                } else {
-                                    $role = RoleCache::getInstance()->getRoleByID($value);
-                                    if ($role === null) {
-                                        $formField->addValidationError(new FormFieldValidationError(
-                                                'invalid',
-                                                'rp.role.error.invalid'
-                                        ));
-                                    }
-                                }
-                            }))
+                if (empty($value)) {
+                    $formField->addValidationError(new FormFieldValidationError('empty'));
+                }
+                else {
+                    $role = RoleCache::getInstance()->getRoleByID($value);
+                    if ($role === null) {
+                        $formField->addValidationError(new FormFieldValidationError(
+                                'invalid',
+                                'rp.role.error.invalid'
+                            ));
+                    }
+                }
+            }))
                     ->addDependency(
-                        NonEmptyFormFieldDependency::create('fightStyleEnable' . $i)
-                        ->field($fightStyleEnable)
-                    ),
+                    NonEmptyFormFieldDependency::create('fightStyleEnable' . $i)
+                    ->field($fightStyleEnable)
+                ),
                 ]),
                 FormContainer::create('fightStyleEquipment' . $i)
                 ->label('rp.character.category.swtor.equipment')
@@ -169,49 +173,49 @@ class SWTORCharacterAddFormBuilderListener implements IParameterizedEventListene
                     ->maximum(330)
                     ->value(0)
                     ->addDependency(
-                        NonEmptyFormFieldDependency::create('fightStyleEnable' . $i)
-                        ->field($fightStyleEnable)
-                    ),
+                    NonEmptyFormFieldDependency::create('fightStyleEnable' . $i)
+                    ->field($fightStyleEnable)
+                ),
                     SingleSelectionFormField::create('implants' . $i)
                     ->label('rp.character.swtor.implants')
                     ->options(function () {
-                        return [
-                        '0' => 'rp.character.swtor.implants.0',
-                        '1' => 'rp.character.swtor.implants.1',
-                        '2' => 'rp.character.swtor.implants.2'
-                        ];
-                    })
+                return [
+                '0' => 'rp.character.swtor.implants.0',
+                '1' => 'rp.character.swtor.implants.1',
+                '2' => 'rp.character.swtor.implants.2'
+                ];
+            })
                     ->addDependency(
-                        NonEmptyFormFieldDependency::create('fightStyleEnable' . $i)
-                        ->field($fightStyleEnable)
-                    ),
+                    NonEmptyFormFieldDependency::create('fightStyleEnable' . $i)
+                    ->field($fightStyleEnable)
+                ),
                     IntegerFormField::create('upgradeBlue' . $i)
                     ->label('rp.character.swtor.upgradeBlue')
                     ->minimum(0)
                     ->maximum(14)
                     ->value(0)
                     ->addDependency(
-                        NonEmptyFormFieldDependency::create('fightStyleEnable' . $i)
-                        ->field($fightStyleEnable)
-                    ),
+                    NonEmptyFormFieldDependency::create('fightStyleEnable' . $i)
+                    ->field($fightStyleEnable)
+                ),
                     IntegerFormField::create('upgradePurple' . $i)
                     ->label('rp.character.swtor.upgradePurple')
                     ->minimum(0)
                     ->maximum(14)
                     ->value(0)
                     ->addDependency(
-                        NonEmptyFormFieldDependency::create('fightStyleEnable' . $i)
-                        ->field($fightStyleEnable)
-                    ),
+                    NonEmptyFormFieldDependency::create('fightStyleEnable' . $i)
+                    ->field($fightStyleEnable)
+                ),
                     IntegerFormField::create('upgradeGold' . $i)
                     ->label('rp.character.swtor.upgradeGold')
                     ->minimum(0)
                     ->maximum(14)
                     ->value(0)
                     ->addDependency(
-                        NonEmptyFormFieldDependency::create('fightStyleEnable' . $i)
-                        ->field($fightStyleEnable)
-                    ),
+                    NonEmptyFormFieldDependency::create('fightStyleEnable' . $i)
+                    ->field($fightStyleEnable)
+                ),
                 ]),
             ]);
             $characterTab->appendChild($characterFightStyleTab);
@@ -228,55 +232,55 @@ class SWTORCharacterAddFormBuilderListener implements IParameterizedEventListene
 
         $eventObj->form->getDataHandler()->addProcessor(
             new CustomFormDataProcessor(
-                'fightStyles',
-                static function (IFormDocument $document, array $parameters) {
-                    $fightStyles = [];
+            'fightStyles',
+        static function (IFormDocument $document, array $parameters) {
+            $fightStyles = [];
 
-                    for ($i = 0; $i < self::$maxFightStyle; $i++) {
-                        /** @var CheckboxFormField $fightStyleEnable */
-                        $fightStyleEnable = $document->getNodeById('fightStyleEnable' . $i);
+            for ($i = 0; $i < self::$maxFightStyle; $i++) {
+                /** @var CheckboxFormField $fightStyleEnable */
+                $fightStyleEnable = $document->getNodeById('fightStyleEnable' . $i);
 
-                        $newFightStyle = [
-                            'fightStyleEnable' => $fightStyleEnable->getSaveValue(),
-                        ];
+                $newFightStyle = [
+                    'fightStyleEnable' => $fightStyleEnable->getSaveValue(),
+                ];
 
-                        if ($fightStyleEnable->getSaveValue()) {
-                            /** @var SingleSelectionFormField $classificationID */
-                            $classificationID = $document->getNodeById('classificationID' . $i);
-                            $newFightStyle['classificationID'] = $classificationID->getSaveValue();
+                if ($fightStyleEnable->getSaveValue()) {
+                    /** @var SingleSelectionFormField $classificationID */
+                    $classificationID = $document->getNodeById('classificationID' . $i);
+                    $newFightStyle['classificationID'] = $classificationID->getSaveValue();
 
-                            /** @var SingleSelectionFormField $roleID */
-                            $roleID = $document->getNodeById('roleID' . $i);
-                            $newFightStyle['roleID'] = $roleID->getSaveValue();
+                    /** @var SingleSelectionFormField $roleID */
+                    $roleID = $document->getNodeById('roleID' . $i);
+                    $newFightStyle['roleID'] = $roleID->getSaveValue();
 
-                            /** @var IntegerFormField $itemLevel */
-                            $itemLevel = $document->getNodeById('itemLevel' . $i);
-                            $newFightStyle['itemLevel'] = $itemLevel->getSaveValue();
+                    /** @var IntegerFormField $itemLevel */
+                    $itemLevel = $document->getNodeById('itemLevel' . $i);
+                    $newFightStyle['itemLevel'] = $itemLevel->getSaveValue();
 
-                            /** @var SingleSelectionFormField $implants */
-                            $implants = $document->getNodeById('implants' . $i);
-                            $newFightStyle['implants'] = $implants->getSaveValue();
+                    /** @var SingleSelectionFormField $implants */
+                    $implants = $document->getNodeById('implants' . $i);
+                    $newFightStyle['implants'] = $implants->getSaveValue();
 
-                            /** @var IntegerFormField $upgradeBlue */
-                            $upgradeBlue = $document->getNodeById('upgradeBlue' . $i);
-                            $newFightStyle['upgradeBlue'] = $upgradeBlue->getSaveValue();
+                    /** @var IntegerFormField $upgradeBlue */
+                    $upgradeBlue = $document->getNodeById('upgradeBlue' . $i);
+                    $newFightStyle['upgradeBlue'] = $upgradeBlue->getSaveValue();
 
-                            /** @var IntegerFormField $upgradePurple */
-                            $upgradePurple = $document->getNodeById('upgradePurple' . $i);
-                            $newFightStyle['upgradePurple'] = $upgradePurple->getSaveValue();
+                    /** @var IntegerFormField $upgradePurple */
+                    $upgradePurple = $document->getNodeById('upgradePurple' . $i);
+                    $newFightStyle['upgradePurple'] = $upgradePurple->getSaveValue();
 
-                            /** @var IntegerFormField $upgradeGold */
-                            $upgradeGold = $document->getNodeById('upgradeGold' . $i);
-                            $newFightStyle['upgradeGold'] = $upgradeGold->getSaveValue();
-                        }
-
-                        $fightStyles[$i] = $newFightStyle;
-                    }
-
-                    $parameters['data']['fightStyles'] = $fightStyles;
-
-                    return $parameters;
+                    /** @var IntegerFormField $upgradeGold */
+                    $upgradeGold = $document->getNodeById('upgradeGold' . $i);
+                    $newFightStyle['upgradeGold'] = $upgradeGold->getSaveValue();
                 }
+
+                $fightStyles[$i] = $newFightStyle;
+            }
+
+            $parameters['data']['fightStyles'] = $fightStyles;
+
+            return $parameters;
+        }
             )
         );
     }
@@ -286,7 +290,8 @@ class SWTORCharacterAddFormBuilderListener implements IParameterizedEventListene
      */
     public function execute($eventObj, $className, $eventName, array &$parameters): void
     {
-        if (GameCache::getInstance()->getCurrentGame()->identifier !== 'swtor') return;
+        if (GameCache::getInstance()->getCurrentGame()->identifier !== 'swtor')
+            return;
 
         switch ($eventName) {
             case 'createForm':
@@ -305,10 +310,10 @@ class SWTORCharacterAddFormBuilderListener implements IParameterizedEventListene
 
             foreach ($fightStyles as $key => $fightStyle) {
                 foreach ($fightStyle as $fightStyleKey => $fightStyleValue) {
-                    /** @var IFormNode $node */
-                    $node = $eventObj->form->getNodeById($fightStyleKey . $key);
-                    if ($node !== null) {
-                        $node->value($fightStyleValue);
+                    /** @var IFormField $field */
+                    $field = $eventObj->form->getNodeById($fightStyleKey . $key);
+                    if ($field !== null) {
+                        $field->value($fightStyleValue);
                     }
                 }
             }

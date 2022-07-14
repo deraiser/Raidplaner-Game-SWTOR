@@ -128,16 +128,12 @@ class SWTORRaidEventControllerListener implements IParameterizedEventListener
                         if (!empty($label)) $label .= ', ';
                         $label .= $role->getTitle();
                     }
-
-                    $parameters['availableCharacters'][$id] = [
-                        'characterID' => $character->characterID,
-                        'characterName' => $character->getTitle(),
-                        'characterLabel' => $character->getTitle() . ' (' . $label . ')',
-                        'classificationID' => $fightStyle['classificationID'],
-                        'icon' => $character->getAvatar()->getImageTag(16),
-                        'roleID' => $fightStyle['roleID'],
-                        'userID' => $character->userID,
-                    ];
+                    
+                    $cloneCharacter = clone $character;
+                    $cloneCharacter->characterName = $character->getTitle() . ' (' . $label . ')';
+                    $cloneCharacter->classificationID = $fightStyle['classificationID'];
+                    $cloneCharacter->roleID = $fightStyle['roleID'];
+                    $parameters['availableCharacters'][$id] = $cloneCharacter;
                 }
             }
         }

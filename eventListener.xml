@@ -26,7 +26,7 @@
 		</eventlistener>
 		<eventlistener name="eventRaidAttendeeAction">
 			<eventclassname>rp\data\event\raid\attendee\EventRaidAttendeeAction</eventclassname>
-			<eventname>initializeAction,submitAddDialog</eventname>
+			<eventname>initializeAction,getLeaderAddDialogCharacters,submitAddDialog,submitLeaderAddDialogCharacter</eventname>
 			<listenerclassname>rp\system\event\listener\SWTOREventRaidAttendeeActionListener</listenerclassname>
 			<environment>user</environment>
 		</eventlistener>
