@@ -1,0 +1,1 @@
+<div class="swtorTorCommunity">{@$content}</div>

@@ -32,6 +32,7 @@
         <instruction type="rpRole" />
         <instruction type="rpClassification" />
         <instruction type="rpServer" />
+        <instruction type="rpItemDatabase" />
         
         <instruction type="language" />
         

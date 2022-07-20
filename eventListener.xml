@@ -36,6 +36,18 @@
 			<listenerclassname>rp\system\event\listener\SWTORRaidEventControllerListener</listenerclassname>
 			<environment>user</environment>
 		</eventlistener>
+		<eventlistener name="raidAddForm">
+			<eventclassname>rp\form\RaidAddForm</eventclassname>
+			<eventname>attendeesCreateForm</eventname>
+			<listenerclassname>rp\system\event\listener\SWTORRaidAddFormListener</listenerclassname>
+			<environment>user</environment>
+		</eventlistener>
+		<eventlistener name="raidEditor">
+			<eventclassname>rp\data\raid\RaidEditor</eventclassname>
+			<eventname>addAttendees</eventname>
+			<listenerclassname>rp\system\event\listener\SWTORRaidEditorListener</listenerclassname>
+			<environment>user</environment>
+		</eventlistener>
         <!-- /user -->
     </import>
 </data>

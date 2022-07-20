@@ -5,15 +5,10 @@ namespace rp\system\event\listener;
 use rp\data\character\CharacterList;
 use rp\data\character\CharacterProfile;
 use rp\data\classification\ClassificationCache;
-use rp\data\event\raid\attendee\EventRaidAttendeeAction;
 use rp\data\game\GameCache;
 use rp\data\role\RoleCache;
-use rp\system\cache\runtime\CharacterRuntimeCache;
-use rp\system\cache\runtime\EventRaidAttendeeRuntimeCache;
-use rp\util\SWTORUtil;
+use rp\form\RaidAddForm;
 use wcf\system\event\listener\IParameterizedEventListener;
-use wcf\system\WCF;
-use rp\data\character\Character;
 
 /*  Project:    Raidplaner: Game: SWTOR
  *  Package:    info.daries.rp.game.swtor
@@ -36,65 +31,22 @@ use rp\data\character\Character;
  */
 
 /**
- * Extended raid event attendee action's
+ * Extended raid add form
  * 
  * @author      Marco Daries
  * @package     Daries\RP\System\Event\Listener
  */
-class SWTOREventRaidAttendeeActionListener implements IParameterizedEventListener
+class SWTORRaidAddFormListener implements IParameterizedEventListener
 {
 
-    /**
-     * @inheritDoc
-     */
-    public function execute($eventObj, $className, $eventName, array &$parameters): void
-    {
-        if (GameCache::getInstance()->getCurrentGame()->identifier !== 'swtor') return;
-        if (!($eventObj instanceof EventRaidAttendeeAction)) return;
-
-        switch ($eventName) {
-            case 'initializeAction':
-                if ($eventObj->getActionName() === 'getPopover') {
-                    $this->getPopover($eventObj);
-                }
-                break;
-            case 'getLeaderAddDialogCharacters':
-                $this->getLeaderAddDialogCharacters($parameters);
-                break;
-            case 'submitAddDialog':
-            case 'submitLeaderAddDialogCharacter':
-                $this->submitAddDialog($parameters);
-                break;
-        }
-    }
-
-    protected function getPopover(EventRaidAttendeeAction $eventObj): void
-    {
-        $attendeeID = $eventObj->getObjectIDs()[0] ?? 0;
-        if (!$attendeeID) return;
-
-        $attendee = EventRaidAttendeeRuntimeCache::getInstance()->getObject($attendeeID);
-        if ($attendee === null) return;
-
-        /** @var Character $character */
-        $character = CharacterRuntimeCache::getInstance()->getObject($attendee->characterID);
-        if ($character === null) return;
-
-        WCF::getTPL()->assign('popupFightStyles', SWTORUtil::getClassArrayList($character));
-    }
-
-    protected function getLeaderAddDialogCharacters(array &$parameters): void
+    protected function attendeesCreateForm(array &$parameters): void
     {
         $charactersFormField = $parameters['charactersFormField'];
-        $actionParameters = $parameters['parameters'];
         $parameters['fieldChanged'] = true;
 
         $characterList = new CharacterList();
         $characterList->getConditionBuilder()->add('member.gameID = ?', [RP_DEFAULT_GAME_ID]);
         $characterList->getConditionBuilder()->add('member.isDisabled = ?', [0]);
-        if (!empty($actionParameters['characterIDs'])) {
-            $characterList->getConditionBuilder()->add('member.characterID NOT IN (?)', [$actionParameters['characterIDs']]);
-        }
         $characterList->readObjects();
 
         $options = [];
@@ -130,20 +82,18 @@ class SWTOREventRaidAttendeeActionListener implements IParameterizedEventListene
         $charactersFormField->options($options, true);
     }
 
-    protected function submitAddDialog(array &$parameters): void
+    /**
+     * @inheritDoc
+     */
+    public function execute($eventObj, $className, $eventName, array &$parameters): void
     {
-        [$characterID, $fightStyleID] = \explode('_', $parameters['characterID'], 2);
+        if (GameCache::getInstance()->getCurrentGame()->identifier !== 'swtor') return;
+        if (!($eventObj instanceof RaidAddForm)) return;
 
-        $character = CharacterRuntimeCache::getInstance()->getObject($characterID);
-        $fightStyle = $character->fightStyles[$fightStyleID];
-
-        $parameters['saveData'] = [
-            'characterID' => $character->characterID,
-            'characterName' => $character->characterName,
-            'classificationID' => $fightStyle['classificationID'],
-            'internID' => $parameters['characterID'],
-            'roleID' => $fightStyle['roleID'],
-        ];
-        $parameters['characterID'] = null;
+        switch ($eventName) {
+            case 'attendeesCreateForm':
+                $this->attendeesCreateForm($parameters);
+                break;
+        }
     }
 }
