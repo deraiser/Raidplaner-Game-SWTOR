@@ -14,7 +14,8 @@ use wcf\system\form\builder\field\IntegerFormField;
 use wcf\system\form\builder\field\SingleSelectionFormField;
 use wcf\util\StringUtil;
 
-/*  Project:    Raidplaner: Game: SWTOR
+/** 
+ *  Project:    Raidplaner: Game: SWTOR
  *  Package:    info.daries.rp.game.swtor
  *  Link:       http://daries.info
  *

@@ -9,7 +9,8 @@ use rp\system\cache\runtime\CharacterProfileRuntimeCache;
 use wcf\system\event\listener\IParameterizedEventListener;
 use wcf\system\WCF;
 
-/*  Project:    Raidplaner: Game: SWTOR
+/**
+ *  Project:    Raidplaner: Game: SWTOR
  *  Package:    info.daries.rp.game.swtor
  *  Link:       http://daries.info
  *

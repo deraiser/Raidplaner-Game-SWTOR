@@ -6,7 +6,8 @@ use rp\data\character\Character;
 use rp\data\classification\ClassificationCache;
 use rp\data\role\RoleCache;
 
-/*  Project:    Raidplaner: Game: SWTOR
+/**
+ *  Project:    Raidplaner: Game: SWTOR
  *  Package:    info.daries.rp.game.swtor
  *  Link:       http://daries.info
  *

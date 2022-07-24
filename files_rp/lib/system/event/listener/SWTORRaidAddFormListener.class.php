@@ -10,7 +10,8 @@ use rp\data\role\RoleCache;
 use rp\form\RaidAddForm;
 use wcf\system\event\listener\IParameterizedEventListener;
 
-/*  Project:    Raidplaner: Game: SWTOR
+/**
+ *  Project:    Raidplaner: Game: SWTOR
  *  Package:    info.daries.rp.game.swtor
  *  Link:       http://daries.info
  *

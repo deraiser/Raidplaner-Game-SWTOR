@@ -11,7 +11,8 @@ use wcf\system\language\LanguageFactory;
 use wcf\system\WCF;
 use wcf\util\StringUtil;
 
-/*  Project:    Raidplaner: Game: SWTOR
+/**
+ *  Project:    Raidplaner: Game: SWTOR
  *  Package:    info.daries.rp.game.swtor
  *  Link:       http://daries.info
  *

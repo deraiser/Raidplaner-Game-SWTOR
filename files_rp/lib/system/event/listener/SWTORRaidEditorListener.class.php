@@ -8,7 +8,8 @@ use rp\data\raid\RaidEditor;
 use rp\system\cache\runtime\CharacterRuntimeCache;
 use wcf\system\event\listener\IParameterizedEventListener;
 
-/*  Project:    Raidplaner: Game: SWTOR
+/**
+ *  Project:    Raidplaner: Game: SWTOR
  *  Package:    info.daries.rp.game.swtor
  *  Link:       http://daries.info
  *

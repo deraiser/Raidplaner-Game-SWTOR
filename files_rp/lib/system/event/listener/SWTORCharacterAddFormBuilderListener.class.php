@@ -24,7 +24,8 @@ use wcf\system\form\builder\IFormDocument;
 use wcf\system\form\builder\IFormNode;
 use wcf\system\form\builder\field\IFormField;
 
-/*  Project:    Raidplaner: Game: SWTOR
+/**
+ *  Project:    Raidplaner: Game: SWTOR
  *  Package:    info.daries.rp.game.swtor
  *  Link:       http://daries.info
  *
