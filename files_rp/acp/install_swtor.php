@@ -112,7 +112,7 @@ function insertEvent(array $datas, PointAccount $pointAccount)
                 ]))->executeAction()['returnValues'];
 
         $eventEditor = new RaidEventEditor($event);
-        $eventEditor->update(['eventName' => 'rp.raid.event.name' . $event->eventID]);
+        $eventEditor->update(['eventName' => 'rp.raid.event.event' . $event->eventID]);
 
         insertLanguageItem($event->eventID, $data['name']);
     }
@@ -126,7 +126,7 @@ function insertLanguageItem(int $id, array $name)
         (new LanguageItemAction([], 'create', [
             'data' => [
                 'languageID' => $language->languageID,
-                'languageItem' => 'rp.raid.event.name' . $id,
+                'languageItem' => 'rp.raid.event.event' . $id,
                 'languageItemValue' => StringUtil::trim($name[$language->languageCode]),
                 'languageCategoryID' => (LanguageFactory::getInstance()->getCategory('rp.raid.event'))->languageCategoryID,
                 'packageID' => PackageCache::getInstance()->getPackageID('info.daries.rp'),
